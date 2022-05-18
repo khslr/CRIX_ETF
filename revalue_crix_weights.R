@@ -1,0 +1,81 @@
+# problem: the tickers/names of the cryptocurrencies of the two data sets 
+#(crix.weights and CCs prices) do not match. Needed to be revalued manually. :( 
+
+#structure:   "CRIX_constituent_ticker" = "name of constituent in CC data set"
+#              e.g."ada"="cardano"
+
+#CRIX weights
+#crix.weights <- read.csv(".csv") #read CRIX consituents file
+#crix.weights$date <- as.Date(crix.weights$date, format="%Y-%m-%d")
+#crix.weights$index_name <- NULL
+#names(crix.weights) <- c("date", "index_members", "weights")
+
+#rename factor levels of crix.weights$index_members, such that they match levels of CCs$Id
+merge_ticks <- function(x){
+crix.weights$index_members <- revalue(crix.weights$index_members, c("aave"="aave", 
+                                                                    "ada"="cardano",
+                                                                    "algo"="algorand",
+                                                                    "atom"="cosmos",
+                                                                    "bat"="basic-attention-token",
+                                                                    "bch"="bitcoin-cash",
+                                                                    "bcn"="bytecoin",
+                                                                    "bnb"="binancecoin", 
+                                                                    "bnt"="bancor",
+                                                                    "busd"="binance-usd", 
+                                                                    "bsv"="bitcoin-cash-sv",
+                                                                    "btc"="bitcoin",
+                                                                    "btg"="bitcoin-gold",
+                                                                    "btt"="bittorrent-2", 
+                                                                    "ceth"="compound-ether", 
+                                                                    "comp"="compound-governance-token",
+                                                                    "cro"="crypto-com-chain", 
+                                                                    "dash"="dash",
+                                                                    "dcr"="decred",
+                                                                    "dgb"="digibyte",
+                                                                    "doge"="dogecoin",
+                                                                    "dot"="polkadot",
+                                                                    "eos"="eos",
+                                                                    "etc"="ethereum-classic",
+                                                                    "eth"="ethereum",
+                                                                    "fil"="filecoin",
+                                                                    "ftm"="fantom",
+                                                                    "ht"="huobi-token",
+                                                                    "icx"="icon",
+                                                                    "iot"="iotx", 
+                                                                    "ksm"="kusama",
+                                                                    "lend"="ethlend",
+                                                                    "leo"="leo-token",
+                                                                    "link"="chainlink",
+                                                                    "lsk"="lisk",
+                                                                    "ltc"="litecoin",
+                                                                    "mana"="decentraland",
+                                                                    "matic"="matic-network", 
+                                                                    "miota"="iota",
+                                                                    "mkr"="maker",
+                                                                    "neo"="neo",
+                                                                    "nexo"="nexo",
+                                                                    "okb"="okb",
+                                                                    "omg"="omisego", 
+                                                                    "ont"="ontology",
+                                                                    "ppt"="populous",
+                                                                    "qtum"="qtum",
+                                                                    "sol"="solana", 
+                                                                    "stx"="blockstack", 
+                                                                    "trx"="tron",
+                                                                    "theta"="theta-token",
+                                                                    "usdc"="usd-coin",
+                                                                    "usdt"="tether",
+                                                                    "ven"="impulseven", 
+                                                                    "vet"="vechain", 
+                                                                    "waves"="waves",
+                                                                    "wbtc"="wrapped-bitcoin",
+                                                                    "xem"="nem", 
+                                                                    "xlm"="stellar", 
+                                                                    "xmr"="monero",
+                                                                    "xrp"="ripple", 
+                                                                    "xtz"="tezos",
+                                                                    "yfi"="yearn-finance",
+                                                                    "zec"="zcash",
+                                                                    "zrx"="0x"
+))
+}
