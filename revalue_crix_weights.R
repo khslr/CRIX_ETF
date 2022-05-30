@@ -76,6 +76,11 @@ crix.weights$index_members <- revalue(crix.weights$index_members, c("aave"="aave
                                                                     "xtz"="tezos",
                                                                     "yfi"="yearn-finance",
                                                                     "zec"="zcash",
-                                                                    "zrx"="0x"
+                                                                    "zrx"="0x", 
+                                                                    "AVAX"="avalanche-2",
+                                                                    "ETH"="ethereum",
+                                                                    "XBT"="bitcoin",
+                                                                    "XEM"="nem",
+                                                                    "XMR"="monero"
 ))
 }
