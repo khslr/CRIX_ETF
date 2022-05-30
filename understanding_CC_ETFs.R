@@ -24,6 +24,7 @@ lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 crix.weights <- read.csv("constituents_data-3.csv")
 #crix.weights$date <- as.date(crix.weights$date, format="%Y-%m-%d")
 crix.weights$date <- as.factor(crix.weights$date)
+crix.weights$X <- NULL
 crix.weights$index_name <- NULL
 names(crix.weights) <- c("date", "index_members", "weights")
 crix.weights <- crix.weights[as.Date(crix.weights$date,format="%Y-%m-%d" ) <  "2021-06-02"
