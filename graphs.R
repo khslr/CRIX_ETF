@@ -25,7 +25,7 @@ plot_spreads_fees <- function(){
   ggplot(sf.df, aes(fill=type, y=quantile, x=date)) + 
     geom_bar(position="stack", stat="identity")+
     scale_fill_viridis(discrete = T, begin = 0.5) +
-    scale_x_date(limits = c(as.Date("2020-07-01"), as.Date("2021-06-01")))+
+    #scale_x_date(limits = c(as.Date("2020-07-01"), as.Date("2021-06-01")))+
     theme(
       panel.background = element_rect(fill='transparent'), #transparent panel bg
       plot.background = element_rect(fill='transparent', color=NA), #transparent plot bg
