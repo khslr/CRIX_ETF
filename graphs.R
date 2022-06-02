@@ -25,6 +25,7 @@ plot_spreads_fees <- function(){
   ggplot(sf.df, aes(fill=type, y=quantile, x=date)) + 
     geom_bar(position="stack", stat="identity")+
     scale_fill_viridis(discrete = T, begin = 0.5) +
+    #ylab("in % of transaction volume")+
     #scale_x_date(limits = c(as.Date("2020-07-01"), as.Date("2021-06-01")))+
     theme(
       panel.background = element_rect(fill='transparent'), #transparent panel bg
@@ -55,7 +56,7 @@ plot_dominance_btc_eth <- function(){
   ggplot(btc.eth, aes(fill=index_members, y=weights, x=date)) + 
     geom_bar(position="stack", stat="identity")+
     scale_fill_viridis(discrete = T, begin = 0.5) +
-    #scale_x_date(limits = c(as.Date("2020-07-01"), as.Date("2021-06-01")))+
+    scale_x_date(limits = c(as.Date("2020-07-01"), as.Date("2021-06-01")))+
     theme(
       panel.background = element_rect(fill='transparent'), #transparent panel bg
       plot.background = element_rect(fill='transparent', color=NA), #transparent plot bg
@@ -95,7 +96,7 @@ plot_noc_delta_fees <- function(){
   save(noc2, file="noc2.rda")
   
   #aggregate deltas 
-  delta.aggr <- aggregate(step3$delta, by=list(step3$date), sum)
+  delta.aggr <- aggregate(step3$delta, by=list(step3$date), function(x)sum(x[x>0]))
   names(delta.aggr) <- c("date", "sum_delta")
   
   #visualize
