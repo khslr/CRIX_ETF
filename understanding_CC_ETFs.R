@@ -146,7 +146,7 @@ initial_invest <- function(date){
   print(head(df.prev))
   return(df.prev)
 }
-date <- "2020-07-01"
+#date <- "2020-07-01"
 #df.prev <- initial_invest("2020-07-01")  
 #rm(df.prev, df2)
 
