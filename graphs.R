@@ -120,15 +120,17 @@ plot_coin_delta <- function(){
     print(paste0(x, " loaded"))
   }))
  
-  
   ggplot(step3, aes(fill=index_members, y=delta, x=as.Date(date))) + 
     geom_bar(position="stack", stat="identity")+
     geom_hline(yintercept=0)+
     scale_fill_manual(values=rep(brewer.pal(12,"Paired"),times=2))+
-    geom_text(aes(label = index_members), position = position_stack(vjust = 0.5), size=2)+
+    geom_text(aes(label = index_members), 
+              position = position_stack(vjust = 0.5), size=2,
+              angle =90)+
     theme(legend.position = "none")+
     xlab("") + ylab("")+
     #scale_x_date(date, date_breaks = "6 months")+
+    #scale_x_date(limits = c(as.Date(dates$d[1]), as.Date(dates$d[3])))+
     theme(
       panel.background = element_rect(fill='transparent'), #transparent panel bg
       plot.background = element_rect(fill='transparent', color=NA), #transparent plot bg
@@ -137,7 +139,7 @@ plot_coin_delta <- function(){
       legend.background = element_rect(fill='transparent'), #transparent legend bg
       legend.box.background = element_rect(fill='transparent') #transparent legend panel
     )
-  ggsave("coin_delta.png")
+  ggsave("coin_delta.png", width = 12, height = 8, dpi = 600)
 }
 #-------------------------------------------------------------------------------
 
