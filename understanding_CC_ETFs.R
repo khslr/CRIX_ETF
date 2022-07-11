@@ -21,7 +21,7 @@ lapply(libraries, library, quietly = TRUE, character.only = TRUE)
 #CRIX weights
 #input structure: 
 #rebalancing date (format = "%Y-%m-%d") / constituent name / weight
-crix.weights <- read.csv("constituents_mock.csv")
+crix.weights <- read.csv("constituents.csv")
 #crix.weights$date <- c(rep(c("2018-01-01"),5),  rep(c("2018-03-14"),5), rep(c("2018-04-13"),5))
 #crix.weights$date <- as.date(crix.weights$date, format="%Y-%m-%d")
 crix.weights$date <- as.factor(crix.weights$date)
@@ -265,7 +265,7 @@ for (date in as.factor(dates[2:nrow(dates),1])) { #  dates[2:4,1] dates[2:nrow(d
   date_minus1 <- dates[which(dates$d==date)-1,]   %>% as.character
   step3 <- stepwise(date)
 }
-rm(df.prev, step3, sub.df.double)
+#rm(df.prev, step3, sub.df.double)
 
 #-------------------------------------------------------------------------------
 ##########
