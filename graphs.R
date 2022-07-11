@@ -112,11 +112,23 @@ plot_crix_etf <- function(){
 # coins ordered by delta: welche coins werden am meisten gerebalanced?
 plot_coin_delta <- function(){
   
-  ggplot(step3, aes(fill=index_members, y=delta, x=date)) + 
+  lib <-  "RColorBrewer"
+  invisible(lapply(lib, function(x){
+    result <- library(x, logical.return=T, character.only =T)
+    if(result == F) install.packages(x)
+    library(x, character.only =T)
+    print(paste0(x, " loaded"))
+  }))
+ 
+  
+  ggplot(step3, aes(fill=index_members, y=delta, x=as.Date(date))) + 
     geom_bar(position="stack", stat="identity")+
-    scale_fill_viridis(discrete = T, begin = 0.5) +
     geom_hline(yintercept=0)+
-    #scale_x_date(limits = c(as.Date("2020-07-01"), as.Date("2021-06-01")))+
+    scale_fill_manual(values=rep(brewer.pal(12,"Paired"),times=2))+
+    geom_text(aes(label = index_members), position = position_stack(vjust = 0.5), size=2)+
+    theme(legend.position = "none")+
+    xlab("") + ylab("")+
+    #scale_x_date(date, date_breaks = "6 months")+
     theme(
       panel.background = element_rect(fill='transparent'), #transparent panel bg
       plot.background = element_rect(fill='transparent', color=NA), #transparent plot bg
